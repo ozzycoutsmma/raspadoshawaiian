@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raspados Hawaiian | Authentic Mexican Shaved Ice & Treats in OKC</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        hawaii: {
+                            orange: '#FF5E00',
+                            teal: '#00B4D8',
+                            cyan: '#00F5D4',
+                            magenta: '#D81159',
+                            lime: '#38B000',
+                            yellow: '#FFB703',
+                            dark: '#0F172A'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Fredoka', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, .font-display { font-family: 'Fredoka', cursive, sans-serif; }
+        .text-gradient {
+            background: linear-gradient(135deg, #FF5E00 0%, #D81159 50%, #00B4D8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-gradient-hero {
+            background: linear-gradient(135deg, #FFF7ED 0%, #E0F2FE 50%, #FCE7F3 100%);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen">
+
+    <!-- TOP ANNOUNCEMENT BAR & REAL-TIME OPEN STATUS -->
+    <div class="bg-slate-900 text-white text-xs sm:text-sm py-2.5 px-4">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center gap-2 mx-auto sm:mx-0">
+                <!-- Real-time dynamic JS status badge -->
+                <span id="live-status-badge" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-500 text-white animate-pulse">
+                    Checking hours...
+                </span>
+                <span class="text-slate-300">4571 NW 23rd St, Oklahoma City, OK 73127</span>
+            </div>
+            <div class="hidden md:flex items-center gap-4 text-xs">
+                <span><i class="fa-solid fa-clock text-hawaii-yellow mr-1"></i> 11:00 AM - 10:00 PM Daily</span>
+                <a href="tel:4052251000" class="hover:text-hawaii-cyan transition-colors font-semibold"><i class="fa-solid fa-phone mr-1"></i> (405) 225-1000</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-hawaii-orange via-hawaii-magenta to-hawaii-teal flex items-center justify-center text-white text-2xl shadow-lg group-hover:rotate-6 transition-transform">
+                        🍧
+                    </div>
+                    <div>
+                        <span class="font-display font-black text-2xl text-slate-900 tracking-tight leading-none block">Raspados <span class="text-hawaii-orange">Hawaiian</span></span>
+                        <span class="text-[10px] font-extrabold tracking-widest text-hawaii-teal uppercase">OKC • Shaved Ice & Street Snacks</span>
+                    </div>
+                </a>
+
+                <!-- Nav Links -->
+                <div class="hidden lg:flex items-center space-x-8 font-semibold text-sm text-slate-700">
+                    <a href="#menu" class="hover:text-hawaii-orange transition-colors">Menu & Treats</a>
+                    <a href="#builder" class="hover:text-hawaii-orange transition-colors flex items-center gap-1.5">
+                        <span>Custom Raspado</span>
+                        <span class="bg-hawaii-magenta text-white text-[10px] font-black px-2 py-0.5 rounded-full">BUILD</span>
+                    </a>
+                    <a href="#vibe" class="hover:text-hawaii-orange transition-colors">Arcade & Vibe</a>
+                    <a href="#reviews" class="hover:text-hawaii-orange transition-colors">Reviews</a>
+                    <a href="#location" class="hover:text-hawaii-orange transition-colors">Location & Hours</a>
+                </div>
+
+                <!-- Action Button -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <a href="#builder" class="bg-gradient-to-r from-hawaii-orange to-hawaii-magenta hover:from-orange-600 hover:to-pink-700 text-white font-extrabold px-5 py-2.5 rounded-2xl shadow-md shadow-orange-500/20 hover:scale-105 transition-all text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Build Raspado
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 focus:outline-none">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-100 px-4 pt-2 pb-6 space-y-3">
+            <a href="#menu" class="block py-2 text-slate-700 hover:text-hawaii-orange font-semibold border-b border-slate-100">Menu & Treats</a>
+            <a href="#builder" class="block py-2 text-slate-700 hover:text-hawaii-orange font-semibold border-b border-slate-100">Build Your Own Raspado 🍧</a>
+            <a href="#vibe" class="block py-2 text-slate-700 hover:text-hawaii-orange font-semibold border-b border-slate-100">Arcade & Seating</a>
+            <a href="#reviews" class="block py-2 text-slate-700 hover:text-hawaii-orange font-semibold border-b border-slate-100">Reviews & Ratings</a>
+            <a href="#location" class="block py-2 text-slate-700 hover:text-hawaii-orange font-semibold">Location & Contact</a>
+            <a href="tel:4052251000" class="block text-center bg-hawaii-orange text-white font-bold py-3 rounded-xl mt-4 shadow-md">Call (405) 225-1000</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative bg-gradient-hero pt-10 pb-20 lg:py-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 bg-white/80 border border-orange-200 text-slate-800 px-4 py-2 rounded-full text-xs sm:text-sm font-bold shadow-sm backdrop-blur-sm">
+                        <span class="text-amber-500">⭐️⭐️⭐️⭐️⭐️</span> 4.0+ Stars Local Favorite in OKC
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-none">
+                        Cool Off With Authentic <br class="hidden sm:inline">
+                        <span class="text-gradient">Mexican Raspados & Tropical Treats!</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        Step into a vibrant paradise at <strong>Raspados Hawaiian</strong>! Hand-shaved ice loaded with natural fruit syrups, signature <strong>Chamangos / Mangonadas</strong>, sweet & savory crepes, churros, and warm <strong>Elote en Vaso</strong>.
+                    </p>
+
+                    <div class="pt-2 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#builder" class="bg-hawaii-orange hover:bg-orange-600 text-white font-black px-8 py-4 rounded-2xl shadow-xl shadow-orange-500/25 hover:scale-105 transition-all text-center text-lg flex items-center justify-center gap-2">
+                            <span>Build Your Raspado</span>
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </a>
+                        <a href="#menu" class="bg-white hover:bg-slate-50 text-slate-900 font-extrabold px-8 py-4 rounded-2xl border border-slate-200 shadow-md hover:scale-105 transition-all text-center text-lg flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-utensils text-hawaii-teal"></i>
+                            <span>View Menu</span>
+                        </a>
+                    </div>
+
+                    <!-- Feature Badges -->
+                    <div class="pt-8 grid grid-cols-3 gap-3 border-t border-slate-200 text-center max-w-md mx-auto lg:mx-0">
+                        <div class="bg-white/60 p-3 rounded-2xl border border-white/80 backdrop-blur-sm">
+                            <div class="text-2xl mb-1">🥭</div>
+                            <div class="text-xs font-bold text-slate-800">100% Natural Fruit</div>
+                        </div>
+                        <div class="bg-white/60 p-3 rounded-2xl border border-white/80 backdrop-blur-sm">
+                            <div class="text-2xl mb-1">🕹️</div>
+                            <div class="text-xs font-bold text-slate-800">Arcade Next Door</div>
+                        </div>
+                        <div class="bg-white/60 p-3 rounded-2xl border border-white/80 backdrop-blur-sm">
+                            <div class="text-2xl mb-1">👨‍👩‍👧‍👦</div>
+                            <div class="text-xs font-bold text-slate-800">Family-Owned</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right / Visual Card -->
+                <div class="lg:col-span-5 relative">
+                    <div class="bg-white p-5 rounded-3xl shadow-2xl border border-orange-100 relative space-y-4">
+                        
+                        <!-- Main Card Banner -->
+                        <div class="relative h-80 rounded-2xl bg-gradient-to-tr from-hawaii-orange via-hawaii-magenta to-hawaii-teal flex flex-col items-center justify-center text-center p-6 text-white shadow-inner overflow-hidden">
+                            <div class="text-8xl mb-2 animate-bounce">🍧</div>
+                            <h3 class="font-display font-black text-3xl drop-shadow-md">Chamango Especial</h3>
+                            <p class="text-amber-100 text-xs mt-2 max-w-xs font-medium">Mango Shaved Ice + Fresh Mango Chunks + Chamoy + Tajín + Tamarind Stick</p>
+                            
+                            <span class="mt-4 bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-extrabold border border-white/30">
+                                🔥 Most Loved Treat
+                            </span>
+                        </div>
+
+                        <!-- Quick Info Strip -->
+                        <div class="grid grid-cols-2 gap-3 text-xs font-semibold">
+                            <div class="bg-orange-50 p-3 rounded-xl border border-orange-100 flex items-center gap-2">
+                                <i class="fa-solid fa-chair text-hawaii-orange text-lg"></i>
+                                <span>Clean Indoor & Outdoor Seating</span>
+                            </div>
+                            <div class="bg-teal-50 p-3 rounded-xl border border-teal-100 flex items-center gap-2">
+                                <i class="fa-solid fa-credit-card text-hawaii-teal text-lg"></i>
+                                <span>Cards & Mobile Pay Accepted</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE MENU SECTION WITH SEARCH & FILTER -->
+    <section id="menu" class="py-16 bg-white border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center space-y-3 max-w-2xl mx-auto mb-10">
+                <span class="text-hawaii-orange font-bold text-xs uppercase tracking-widest bg-orange-100 px-3 py-1 rounded-full">Menu Highlights</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-slate-900">Explore Our Full Menu</h2>
+                <p class="text-slate-600 text-sm">Authentic Mexican raspados, sweet crepes, savory street corn, and icy beverages!</p>
+                
+                <!-- Live Search Bar -->
+                <div class="pt-4 max-w-md mx-auto relative">
+                    <input type="text" id="menu-search" oninput="handleSearch()" placeholder="Search menu (e.g., Mango, Crepe, Elote, Churros)..." class="w-full pl-11 pr-4 py-3 rounded-2xl border border-slate-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-hawaii-orange text-sm font-medium">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-4 text-slate-400"></i>
+                </div>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10" id="filter-tabs">
+                <button onclick="filterCategory('all')" class="cat-btn active bg-hawaii-orange text-white border-hawaii-orange font-bold px-5 py-2.5 rounded-full text-xs border shadow-sm transition-all">
+                    ✨ All Items
+                </button>
+                <button onclick="filterCategory('raspados')" class="cat-btn bg-white text-slate-700 border-slate-200 font-bold px-5 py-2.5 rounded-full text-xs border hover:border-hawaii-orange transition-all">
+                    🍧 Raspados & Shaved Ice
+                </button>
+                <button onclick="filterCategory('signature')" class="cat-btn bg-white text-slate-700 border-slate-200 font-bold px-5 py-2.5 rounded-full text-xs border hover:border-hawaii-orange transition-all">
+                    🥭 Signature Treats
+                </button>
+                <button onclick="filterCategory('crepes')" class="cat-btn bg-white text-slate-700 border-slate-200 font-bold px-5 py-2.5 rounded-full text-xs border hover:border-hawaii-orange transition-all">
+                    🥞 Crepes & Churros
+                </button>
+                <button onclick="filterCategory('snacks')" class="cat-btn bg-white text-slate-700 border-slate-200 font-bold px-5 py-2.5 rounded-full text-xs border hover:border-hawaii-orange transition-all">
+                    🌽 Street Snacks (Elote)
+                </button>
+                <button onclick="filterCategory('drinks')" class="cat-btn bg-white text-slate-700 border-slate-200 font-bold px-5 py-2.5 rounded-full text-xs border hover:border-hawaii-orange transition-all">
+                    🥤 Milkshakes & Aguas Frescas
+                </button>
+            </div>
+
+            <!-- Dynamic Menu Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="menu-grid">
+                <!-- Javascript populates menu cards here -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- BUILD YOUR OWN RASPADO WIDGET -->
+    <section id="builder" class="py-16 bg-slate-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center space-y-3 max-w-2xl mx-auto mb-12">
+                <span class="bg-hawaii-orange text-white font-extrabold text-xs px-3 py-1 rounded-full uppercase tracking-wider">Custom Cup Builder</span>
+                <h2 class="text-3xl sm:text-5xl font-black font-display">Build Your Custom Raspado 🍧</h2>
+                <p class="text-slate-400 text-sm">Mix your favorite natural fruit flavors, drizzles, spicy chamoy, and fresh toppings!</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Builder Controls (Left Column) -->
+                <div class="lg:col-span-7 bg-slate-800 p-6 sm:p-8 rounded-3xl border border-slate-700 space-y-6">
+                    
+                    <!-- Step 1: Size -->
+                    <div>
+                        <label class="block font-display font-bold text-base text-white mb-3">1. Select Size</label>
+                        <div class="grid grid-cols-3 gap-3">
+                            <button onclick="setBuilderSize('Small', 5.00)" id="size-btn-Small" class="size-option p-3 border-2 border-hawaii-orange bg-slate-700/80 rounded-2xl text-center cursor-pointer transition-all">
+                                <div class="text-xs text-slate-400 font-semibold uppercase">Small</div>
+                                <div class="text-lg font-bold text-hawaii-orange">$5.00</div>
+                            </button>
+                            <button onclick="setBuilderSize('Medium', 7.00)" id="size-btn-Medium" class="size-option p-3 border-2 border-slate-700 rounded-2xl text-center cursor-pointer hover:border-hawaii-orange transition-all">
+                                <div class="text-xs text-slate-400 font-semibold uppercase">Medium</div>
+                                <div class="text-lg font-bold text-hawaii-orange">$7.00</div>
+                            </button>
+                            <button onclick="setBuilderSize('Large', 9.00)" id="size-btn-Large" class="size-option p-3 border-2 border-slate-700 rounded-2xl text-center cursor-pointer hover:border-hawaii-orange transition-all">
+                                <div class="text-xs text-slate-400 font-semibold uppercase">Large</div>
+                                <div class="text-lg font-bold text-hawaii-orange">$9.00</div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Flavors -->
+                    <div>
+                        <label class="block font-display font-bold text-base text-white mb-2">2. Choose Primary Fruit Flavor</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                            <button onclick="setBuilderFlavor('Natural Strawberry 🍓')" class="flavor-opt p-2.5 rounded-xl border border-slate-700 text-xs font-semibold text-left hover:border-hawaii-orange">Strawberry 🍓</button>
+                            <button onclick="setBuilderFlavor('Mango 🥭')" class="flavor-opt p-2.5 rounded-xl border border-slate-700 text-xs font-semibold text-left hover:border-hawaii-orange">Mango 🥭</button>
+                            <button onclick="setBuilderFlavor('Coconut 🥥')" class="flavor-opt p-2.5 rounded-xl border border-slate-700 text-xs font-semibold text-left hover:border-hawaii-orange">Coconut 🥥</button>
+                            <button onclick="setBuilderFlavor('Pecan / Nuez 🌰')" class="flavor-opt p-2.5 rounded-xl border border-slate-700 text-xs font-semibold text-left hover:border-hawaii-orange">Pecan / Nuez 🌰</button>
+                            <button onclick="setBuilderFlavor('Pineapple 🍍')" class="flavor-opt p-2.5 rounded-xl border border-slate-700 text-xs font-semibold text-left hover:border
